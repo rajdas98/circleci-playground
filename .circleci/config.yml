@@ -1,0 +1,21 @@
+---
+version: 2.1
+jobs:
+  test:
+    machine:
+      image: circleci/classic:201808-01
+    steps:
+      - run:
+          name: Setup ENV
+          command: |
+            echo $CIRCLE_BRANCH
+            echo $CIRCLE_TAG
+
+workflows:
+  version: 2
+  test-circle:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /.*/
