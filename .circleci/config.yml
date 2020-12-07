@@ -105,7 +105,7 @@ jobs:
             timestamp=`date "+%s"`
             version=""
             if [ "$CIRCLE_BRANCH" == "" ]; then
-                version=$CIRCLE_TAG-$timestamp"
+                version="$CIRCLE_TAG-$timestamp"
             else
                 version="$CIRCLE_BRANCH-$timestamp"
             fi;
