@@ -52,9 +52,9 @@ const SideBar: React.FC = () => {
   const { t } = useTranslation();
   const pathName = useLocation().pathname.split('/')[1];
   var version = process.env.REACT_APP_KB_CHAOS_VERSION
-  console.log(version)
-  console.log(process.env)
-  console.log(process)
+  // console.log(version)
+  // console.log(process.env)
+  // console.log(process)
   return (
     <Drawer
       data-cy="sidebarComponent"
