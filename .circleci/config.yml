@@ -9,7 +9,7 @@ jobs:
           name: Setup ENV
           command: |
             timestamp=`date "+%s"`
-            if [[ "$CIRCLE_BRANCH" == ""]]; then $CIRCLE_TAG-$timestamp; else $CIRCLE_BRANCH-$timestamp; fi
+            if [[ "$CIRCLE_BRANCH" == "" ]] then $CIRCLE_TAG-$timestamp; else $CIRCLE_BRANCH-$timestamp; fi
 
 workflows:
   version: 2
