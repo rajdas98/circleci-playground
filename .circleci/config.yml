@@ -212,10 +212,10 @@ workflows:
   version: 2
   litmus-portal:
     jobs:
-      - frontend-services-checks:
-          filters:
-            tags:
-              only: /.*/
+      # - frontend-services-checks:
+      #     filters:
+      #       tags:
+      #         only: /.*/
       - setup-env:
           filters:
             tags:
@@ -223,19 +223,9 @@ workflows:
       - docker-build-frontend:
           requires:
             - setup-env
-            - frontend-services-checks
           filters:
             tags:
               only: /.*/
-      - docker-build-unprivileged-frontend:
-          requires:
-            - setup-env
-            - frontend-services-checks
-          filters:
-            branches:
-              only:
-                - master
-                - /^v.*/
       - docker-push:
           requires:
             - docker-build-frontend
