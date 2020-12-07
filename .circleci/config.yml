@@ -154,26 +154,26 @@ jobs:
       - run:
           name: Loading all docker images
           command: |
-            docker load -i /tmp/workspace/${GRAPHQL_SERVER_IMAGE}.tar
-            docker load -i /tmp/workspace/${SUBSCRIBER_IMAGE}.tar
-            docker load -i /tmp/workspace/${AUTHENTICATION_SERVER_IMAGE}.tar
+            # docker load -i /tmp/workspace/${GRAPHQL_SERVER_IMAGE}.tar
+            # docker load -i /tmp/workspace/${SUBSCRIBER_IMAGE}.tar
+            # docker load -i /tmp/workspace/${AUTHENTICATION_SERVER_IMAGE}.tar
             docker load -i /tmp/workspace/${FRONTEND_IMAGE}.tar
-            docker load -i /tmp/workspace/${FRONTEND_UNPRIVILEGED_IMAGE}.tar
-      - run:
-          name: Pushing graphql server image
-          command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${GRAPHQL_SERVER_IMAGE} --IMGTAG=${IMGTAG}
+            # docker load -i /tmp/workspace/${FRONTEND_UNPRIVILEGED_IMAGE}.tar
+      # - run:
+      #     name: Pushing graphql server image
+      #     command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${GRAPHQL_SERVER_IMAGE} --IMGTAG=${IMGTAG}
       - run:
           name: Pushing frontend image
-          command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${FRONTEND_IMAGE} --IMGTAG=${IMGTAG}
-      - run:
-          name: Pushing auth server image
-          command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${AUTHENTICATION_SERVER_IMAGE} --IMGTAG=${IMGTAG}
-      - run:
-          name: Pushing subscriber server image
-          command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${SUBSCRIBER_IMAGE} --IMGTAG=${IMGTAG}
-      - run:
-          name: Pushing unprivileged frontend image
-          command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${FRONTEND_UNPRIVILEGED_IMAGE} --IMGTAG=${IMGTAG}
+          command: bash ./hack/push --TYPE=$CIRCLE_BRANCH-ci --REPONAME=${REPONAME} --IMGNAME=${FRONTEND_IMAGE} --IMGTAG=${IMGTAG}
+      # - run:
+      #     name: Pushing auth server image
+      #     command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${AUTHENTICATION_SERVER_IMAGE} --IMGTAG=${IMGTAG}
+      # - run:
+      #     name: Pushing subscriber server image
+      #     command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${SUBSCRIBER_IMAGE} --IMGTAG=${IMGTAG}
+      # - run:
+      #     name: Pushing unprivileged frontend image
+      #     command: bash ./hack/push --TYPE=ci --REPONAME=${REPONAME} --IMGNAME=${FRONTEND_UNPRIVILEGED_IMAGE} --IMGTAG=${IMGTAG}
   release:
     machine:
       image: circleci/classic:201808-01
@@ -188,25 +188,25 @@ jobs:
       - run:
           name: Loading all docker images
           command: |
-            docker load -i /tmp/workspace/${GRAPHQL_SERVER_IMAGE}.tar
-            docker load -i /tmp/workspace/${SUBSCRIBER_IMAGE}.tar
-            docker load -i /tmp/workspace/${AUTHENTICATION_SERVER_IMAGE}.tar
+            # docker load -i /tmp/workspace/${GRAPHQL_SERVER_IMAGE}.tar
+            # docker load -i /tmp/workspace/${SUBSCRIBER_IMAGE}.tar
+            # docker load -i /tmp/workspace/${AUTHENTICATION_SERVER_IMAGE}.tar
             docker load -i /tmp/workspace/${FRONTEND_IMAGE}.tar
       - run:
           name: Docker images
           command: docker images
-      - run:
-          name: Pushing graphql server image
-          command: bash ./hack/push --TYPE=release --REPONAME=${REPONAME} --IMGNAME=${GRAPHQL_SERVER_IMAGE} --IMGTAG=${IMGTAG}
+      # - run:
+      #     name: Pushing graphql server image
+      #     command: bash ./hack/push --TYPE=release --REPONAME=${REPONAME} --IMGNAME=${GRAPHQL_SERVER_IMAGE} --IMGTAG=${IMGTAG}
       - run:
           name: Pushing frontend image
-          command: bash ./hack/push --TYPE=release --REPONAME=${REPONAME} --IMGNAME=${FRONTEND_IMAGE} --IMGTAG=${IMGTAG}
-      - run:
-          name: Pushing auth server image
-          command: bash ./hack/push --TYPE=release --REPONAME=${REPONAME} --IMGNAME=${AUTHENTICATION_SERVER_IMAGE} --IMGTAG=${IMGTAG}
-      - run:
-          name: Pushing subscriber server image
-          command: bash ./hack/push --TYPE=release --REPONAME=${REPONAME} --IMGNAME=${SUBSCRIBER_IMAGE} --IMGTAG=${IMGTAG}
+          command: bash ./hack/push --TYPE=$CIRCLE_TAG --REPONAME=${REPONAME} --IMGNAME=${FRONTEND_IMAGE} --IMGTAG=${IMGTAG}
+      # - run:
+      #     name: Pushing auth server image
+      #     command: bash ./hack/push --TYPE=release --REPONAME=${REPONAME} --IMGNAME=${AUTHENTICATION_SERVER_IMAGE} --IMGTAG=${IMGTAG}
+      # - run:
+      #     name: Pushing subscriber server image
+      #     command: bash ./hack/push --TYPE=release --REPONAME=${REPONAME} --IMGNAME=${SUBSCRIBER_IMAGE} --IMGTAG=${IMGTAG}
 workflows:
   version: 2
   litmus-portal:
