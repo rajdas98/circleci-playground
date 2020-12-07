@@ -4,11 +4,11 @@ executors:
   golang:
     docker:
       - image: circleci/golang:1.14.8-node
-    resource_class: large
+    resource_class: medium
   nodejs:
     docker:
       - image: circleci/node:10.0.0
-    resource_class: large
+    resource_class: medium
   cosmic:
     docker:
       - image: circleci/buildpack-deps:cosmic
@@ -53,7 +53,7 @@ jobs:
   docker-build-backend:
     machine:
       image: circleci/classic:201808-01
-      resource_class: large
+      resource_class: medium
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -91,7 +91,7 @@ jobs:
   docker-build-frontend:
     machine:
       image: circleci/classic:201808-01
-      resource_class: large
+      resource_class: medium
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -122,7 +122,7 @@ jobs:
   docker-build-unprivileged-frontend:
     machine:
       image: circleci/classic:201808-01
-      resource_class: large
+      resource_class: medium
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -144,7 +144,7 @@ jobs:
   docker-push:
     machine:
       image: circleci/classic:201808-01
-      resource_class: large
+      resource_class: medium
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -178,7 +178,7 @@ jobs:
   release:
     machine:
       image: circleci/classic:201808-01
-      resource_class: large
+      resource_class: medium
     steps:
       - attach_workspace:
           at: /tmp/workspace
