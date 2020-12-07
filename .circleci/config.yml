@@ -9,8 +9,7 @@ jobs:
           name: Setup ENV
           command: |
             timestamp=`date "+%s"`
-            echo $CIRCLE_BRANCH-$timestamp
-            echo $CIRCLE_TAG-$timestamp
+            if [[$CIRCLE_BRANCH==""] then $CIRCLE_TAG-$timestamp else $CIRCLE_BRANCH-$timestamp fi
 
 workflows:
   version: 2
